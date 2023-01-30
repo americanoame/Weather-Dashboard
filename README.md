@@ -21,8 +21,8 @@
 ###### HTML, CSS, JAVASCRIPT
 
 ## Usage
-#### Check the deployed aplication at: 
-#### Or by visiting: 
+#### Check the deployed aplication at:  https://americanoame.github.io/Weather-Dashboard/
+#### Or by visiting: https://github.com/americanoame/Weather-Dashboard
 
 
 ## ⚖️ License
