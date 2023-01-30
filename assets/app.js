@@ -1,7 +1,7 @@
 var weatherCard = document.querySelector('weather-card');
 var fetchButton = document.getElementById('fetch-button');
 var inputVal = document.getElementById('location-input');
-var weatherDiv = document.getElementById('ticketmaster-div');
+var weatherDiv = document.getElementById('forecast-div');
 
 
 function checkWheather() {
@@ -26,6 +26,26 @@ function checkWheather() {
                 .then(function (data) {
                     console.log(data);
                     // Go into the second call data, list, then you can see the data for each day
+                    // So you grab that data by going through the object into the main property and selecting the temp property
+                    if (data) {
+                        var weatherTemp = data.list[0].main.temp;
+                        var weatherWin = data.list[0].wind.speed;
+                        var weatherHumidity = data.list[0].main.humidity
+                        var weatherIcon = data.list[0].weather[0].icon;
+                        var weatherIconUrl = 'https://openweathermap.org/img/wn/' + weatherIcon;
+                    }
+                    weatherDiv.innerHTML =
+                        `<div class="col-md" id="forecast-div">
+                      <div class="card">
+                      <div class="card-body">
+                          <img id='forecast-icon' src=${weatherIconUrl} alt=''>
+                          <p>${weatherTemp}</p>
+                          <p>${weatherWin}</p>
+                          <p>${weatherHumidity}</p>
+                      </div>
+                    </div>
+                 </div>`;
+
                 })
 
             for (var i = 0; i < data.length; i++) {
@@ -36,20 +56,6 @@ function checkWheather() {
                     eventName = eventImage + ':' + eventDate;
                 }
 
-                weatherDiv.innerHTML =
-                    `<div class="card small hoverable ticketmaster-card">
-                <div class="card-image">
-                    <p>ADD IN ICON HERE</p>
-                </div>
-                <div class="card-content">
-                    <p>${data.main.temp}</p>
-                    <p>placeholder</p>
-                    <p>placeholder</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">Placeholder</a>
-                </div>
-            </div>`;
 
             };
         })
